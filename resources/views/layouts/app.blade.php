@@ -17,12 +17,7 @@
 </head>
 <body>
 <div id="app">
-    <section class="px-8">
-        <header>
-            <h1>Tweety</h1>
-        </header>
-    </section>
-    <section class="px-8">
+    <section class="px-4 container m-auto">
         <main>
             @yield('content')
         </main>
