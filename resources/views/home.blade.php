@@ -16,7 +16,7 @@
             <h3 class="pb-3 mb-3 border-b">Home</h3>
             @include('_publish-tweet-panel')
 
-            @foreach(range(1,8) as $index)
+            @foreach($tweets as $tweet)
                 @include('_tweet')
             @endforeach
         </div>
