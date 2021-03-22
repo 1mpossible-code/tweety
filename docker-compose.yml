@@ -5,7 +5,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./src:/app
+      - .:/app
     environment:
       - WEB_DOCUMENT_ROOT=/app/public
   mariadb:
