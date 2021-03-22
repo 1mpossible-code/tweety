@@ -46,23 +46,10 @@ class User extends Authenticatable
         return 'https://i.pravatar.cc/40?u='.$this->email;
     }
 
-    public function timeline()
-    {
-        $followsIds = $this->follows()->pluck('id');
-
-        return Tweet::whereIn('user_id', $followsIds)
-            ->orWhere('user_id', $this->id)
-            ->latest()->get();
-    }
 
     public function tweets()
     {
         return $this->hasMany(Tweet::class);
-    }
-
-    public function follow(User $user)
-    {
-        return $this->follows()->save($user);
     }
 
     public function follows()

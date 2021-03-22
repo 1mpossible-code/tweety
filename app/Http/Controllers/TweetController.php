@@ -2,27 +2,70 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTweetRequest;
 use App\Models\Tweet;
+use App\Services\TweetService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
+/**
+ * Class TweetController
+ * @package App\Http\Controllers
+ */
 class TweetController extends Controller
 {
+    /**
+     * @var TweetService
+     */
+    private $tweetService;
+    /**
+     * @var UserService
+     */
+    private $userService;
+
+    /**
+     * TweetController constructor.
+     * @param TweetService $tweetService
+     * @param $userService
+     */
+    public function __construct(TweetService $tweetService, UserService $userService)
+    {
+        $this->middleware('auth');
+
+        $this->tweetService = $tweetService;
+        $this->userService = $userService;
+    }
+
+    /**
+     * Showing the tweets page
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index()
     {
+        $user = auth()->user();
+        $timeline = $this->userService->timeline($user);
+
         return view('home', [
-            'tweets' => auth()->user()->timeline()
+            'tweets' => $timeline
         ]);
     }
 
-    public function store()
+    /**
+     * Store the new tweet
+     * @param StoreTweetRequest $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function store(StoreTweetRequest $request)
     {
-        $attributes = \request()->validate(['body' => 'required|max:255']);
+        $userId = auth()->id();
+        $body = $request->validated()['body'];
 
-        Tweet::create([
-            'user_id' => auth()->id(),
-            'body' => $attributes['body']
-        ]);
+        if (!$this->tweetService->create($userId, $body)) {
+            Session::flash('error', 'Creating new tweet failed!');
+            return back();
+        }
 
-        return redirect(route('home'));
+        return redirect(route('tweets.index'));
     }
 }
