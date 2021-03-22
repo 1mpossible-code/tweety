@@ -1,6 +1,6 @@
 <div class="flex border-b-8 pb-4 mb-10">
     <div class="flex-shrink-0 float-left">
-        <img src="{{ auth()->user()->avatar }}" class="float-right rounded-full mx-2 mt-2" alt="your avatar">
+        <img src="{{ auth()->user()->avatar }}" class="float-right rounded-full mx-2 mt-2" alt="your avatar" style="max-width: 50px">
     </div>
     <form action="{{ route('tweets.store') }}" class="w-full float-left" method="POST">
         @csrf

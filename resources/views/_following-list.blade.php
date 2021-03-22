@@ -6,8 +6,8 @@
             @foreach(auth()->user()->follows as $user)
                 <li>
                     <div class="flex items-center my-4 lg:text-sm md:text-xs">
-
-                        <div class="flex-1 flex flex-row items-center mr-4">
+                        <a href="{{ route('profile', $tweet->user) }}"
+                           class="flex-1 flex flex-row items-center mr-4">
                             <img
                                 src="{{ $user->avatar }}"
                                 alt=""
@@ -17,7 +17,7 @@
                                 <div class="text-md">{{ $user->name }}</div>
                                 <div class="font-weight-light text-gray-400 text-sm">@johndoe</div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </li>
                 <hr>

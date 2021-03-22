@@ -46,7 +46,7 @@ class TweetController extends Controller
         $user = auth()->user();
         $timeline = $this->userService->timeline($user);
 
-        return view('home', [
+        return view('tweets.index', [
             'tweets' => $timeline
         ]);
     }
