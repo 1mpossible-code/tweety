@@ -15,12 +15,52 @@ use Illuminate\Database\Eloquent\Model;
 class UserService
 {
     /**
-     * @param User $user
+     * Subscribes the user to specified another one
+     * @param User $subscriber
+     * @param User $followed
      * @return Model
      */
-    public function follow(User $user): Model
+    public function follow(User $subscriber, User $followed): Model
     {
-        return User::follows()->save($user);
+        return $subscriber->follows()->save($followed);
+    }
+
+    /**
+     * Delete the subscription of subscriber to the followed user
+     * @param User $subscriber
+     * @param User $followed
+     * @return int
+     */
+    public function unfollow(User $subscriber, User $followed): int
+    {
+        return $subscriber->follows()->detach($followed);
+    }
+
+    /**
+     * The helper function to toggle the subscription of selected user to another one
+     * @param User $subscriber
+     * @param User $followed
+     * @return Model|int
+     */
+    public function toggleFollow(User $subscriber, User $followed)
+    {
+        $isFollowing = $this->isFollowing($subscriber, $followed);
+        if ($isFollowing) {
+            return $this->unfollow($subscriber, $followed);
+        }
+        return $this->follow($subscriber, $followed);
+    }
+
+
+    /**
+     * Returns true if the subscriber following the checked user and false if not
+     * @param User $subscriber
+     * @param User $checkedUser
+     * @return mixed
+     */
+    public function isFollowing(User $subscriber, User $checkedUser)
+    {
+        return $subscriber->follows()->where('following_user_id', $checkedUser->id)->exists();
     }
 
 

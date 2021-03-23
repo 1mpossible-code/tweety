@@ -2,8 +2,8 @@
     <header class="mb-6">
         <div class="banner relative">
             <img src="/images/default-profile-banner.jpg" alt="Banner" class="rounded-3xl mb-2">
-            <img src="{{ $user->avatar }}" class="rounded-full absolute" alt=""
-                 style="width: 100px; top: calc(100% - 50px); left: calc(50% - 50px)">
+            <img src="{{ $user->avatar }}" class="rounded-full absolute top-full left-1/2 transform -translate-x-1/2 -translate-y-1/2" alt=""
+                 style="width: 100px">
         </div>
 
         <div class="flex justify-between items-center">
@@ -13,8 +13,9 @@
             </div>
 
             <div>
-                <a href="" class="rounded-full border border-gray-300 py-2 px-4 mr-1 text-sm">Edit Profile</a>
-                <a href="" class="bg-blue-500 rounded-full shadow py-2 px-4 text-white text-sm">Follow Me</a>
+                <a href="" class="rounded-full border border-gray-300 py-2 px-4 mr-1 text-sm mb-1 block float-left">Edit
+                    Profile</a>
+                <x-follow-button :user="$user" :isFollowing="$isFollowing" />
             </div>
         </div>
 

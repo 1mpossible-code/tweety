@@ -66,6 +66,6 @@ class TweetController extends Controller
             return back();
         }
 
-        return redirect(route('tweets.index'));
+        return redirect()->route('tweets.index');
     }
 }
