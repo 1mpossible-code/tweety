@@ -37,4 +37,10 @@ class ProfileController extends Controller
         $isFollowing = $this->userService->isFollowing($checkingUser, $user);
         return view('profile.show', compact('user', 'isFollowing'));
     }
+
+    public function edit(User $user)
+    {
+        $this->authorize('edit', $user);
+        return view('profile.edit', compact('user'));
+    }
 }

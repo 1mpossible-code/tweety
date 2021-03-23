@@ -13,3 +13,5 @@ Route::post('tweets', [TweetController::class, 'store'])->name('tweets.store');
 
 Route::get('profile/{user:name}', [ProfileController::class, 'show'])->name('profile');
 Route::post('profile/{user:name}/follow', [FollowController::class, 'store'])->name('follow');
+
+Route::get('profile/{user:name}/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
