@@ -3,7 +3,7 @@
         <h3 class="font-bold text-xl mb-4">Following</h3>
 
         <ul>
-            @foreach(auth()->user()->follows as $user)
+            @forelse(auth()->user()->follows as $user)
                 <li>
                     <div class="flex items-center my-4 lg:text-sm md:text-xs">
                         <a href="{{ route('profile', $user->name) }}"
@@ -16,13 +16,15 @@
                             >
                             <div class="">
                                 <div class="text-md">{{ $user->name }}</div>
-                                <div class="font-weight-light text-gray-400 text-sm">@johndoe</div>
+                                <div class="font-weight-light text-gray-400 text-sm">{{ '@'.$user->username }}</div>
                             </div>
                         </a>
                     </div>
                 </li>
                 <hr>
-            @endforeach
+            @empty
+                <li>You don't follow anyone</li>
+            @endforelse
         </ul>
     </div>
 </div>

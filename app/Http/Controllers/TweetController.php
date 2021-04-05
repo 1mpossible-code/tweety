@@ -31,8 +31,6 @@ class TweetController extends Controller
      */
     public function __construct(TweetService $tweetService, UserService $userService)
     {
-        $this->middleware('auth');
-
         $this->tweetService = $tweetService;
         $this->userService = $userService;
     }

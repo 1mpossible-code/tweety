@@ -15,7 +15,7 @@
 
             <div>
                 @can('edit', $user)
-                    <a href="{{ route('profile.edit', $user->name) }}" class="rounded-full border border-gray-300 py-2 px-4 mr-1 text-sm mb-1 block float-left">
+                    <a href="{{ route('profile.edit', $user->username) }}" class="rounded-full border border-gray-300 py-2 px-4 mr-1 text-sm mb-1 block float-left">
                         Edit Profile
                     </a>
                 @endcan
