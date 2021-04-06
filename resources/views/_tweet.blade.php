@@ -7,17 +7,14 @@
         </div>
 
         <div class="">
-            <div class="w-full inline-block">
+            <div class="w-full inline-block flex items-center">
 
                 <a href="{{ route('profile', $tweet->user) }}">
                     <h5 class="float-left font-bold ml-1">{{ $tweet->user->name }}</h5>
-                </a>
-
-                <a href="{{ route('profile', $tweet->user) }}">
                     <span class="float-left mx-1 text-gray-400">{{ '@'.$tweet->user->username }}</span>
                 </a>
-                <span class="float-left pt-1 text-bold mx-1 text-gray-400">&dot;</span>
-                <span class="float-left">14s</span>
+                <span class="float-left text-bold mx-1 text-gray-400 translate-y-1.5 transform">&dot;</span>
+                <span class="float-left text-xs mx-1 text-gray-400">{{ $tweet->created_at->diffForHumans() }}</span>
             </div>
             <p>{{ $tweet->body }}</p>
 

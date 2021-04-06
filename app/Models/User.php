@@ -65,10 +65,7 @@ class User extends Authenticatable
      */
     public function getAvatarAttribute($value)
     {
-        if (!property_exists( $this, 'avatar' )) {
-            return asset('images/default-user-avatar.png');
-        }
-        return asset("storage/avatars/{$value}");
+        return asset($value ? "storage/avatars/{$value}" : 'images/default-user-avatar.png');
     }
 
 
