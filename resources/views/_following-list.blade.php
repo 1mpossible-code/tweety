@@ -6,7 +6,7 @@
             @forelse(auth()->user()->follows as $user)
                 <li>
                     <div class="flex items-center my-4 lg:text-sm md:text-xs">
-                        <a href="{{ route('profile', $user->name) }}"
+                        <a href="{{ route('profile', $user) }}"
                            class="flex-1 flex flex-row items-center mr-4">
                             <img
                                 src="{{ $user->avatar }}"

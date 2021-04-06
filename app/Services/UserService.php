@@ -40,15 +40,11 @@ class UserService
      * The helper function to toggle the subscription of selected user to another one
      * @param User $subscriber
      * @param User $followed
-     * @return Model|int
+     * @return array|array[]|Model|int
      */
     public function toggleFollow(User $subscriber, User $followed)
     {
-        $isFollowing = $this->isFollowing($subscriber, $followed);
-        if ($isFollowing) {
-            return $this->unfollow($subscriber, $followed);
-        }
-        return $this->follow($subscriber, $followed);
+        return $subscriber->follows()->toggle($followed);
     }
 
 

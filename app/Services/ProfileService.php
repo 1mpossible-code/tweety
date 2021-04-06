@@ -27,10 +27,12 @@ class ProfileService
 
         $attributes = $request->validated();
 
-        $path = Storage::put('avatars', $request->file('avatar'));
+        $avatar = $request->file('avatar');
 
-        $attributes['avatar'] = basename($path);
-        $attributes['password'] = Hash::make($attributes['password']);
+        if ($avatar) {
+            $pathToAvatar = Storage::put('avatars', $avatar);
+            $attributes['avatar'] = basename($pathToAvatar);
+        }
 
         return $user->update($attributes);
 

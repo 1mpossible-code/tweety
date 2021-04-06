@@ -13,9 +13,4 @@ class UserPolicy
     {
         return $currentUser->is($user);
     }
-
-    public function update(User $currentUser, User $user)
-    {
-        return $currentUser->is($user);
-    }
 }
