@@ -68,7 +68,7 @@ class ProfileController extends Controller
      */
     public function update(User $user, UpdateProfileRequest $request)
     {
-        $this->authorize('update', $user);
+        $this->authorize('edit', $user);
 
         if (!$this->profileService->update($user, $request)) {
             Session::flash('error', 'Profile update failed!');
