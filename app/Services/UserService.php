@@ -63,15 +63,16 @@ class UserService
     /**
      * Returns a timeline of tweets for selected user
      * @param User $user
+     * @param int $amount
      * @return mixed
      */
-    public function timeline(User $user)
+    public function timeline(User $user, int $amount)
     {
         $followsIds = $user->follows()->pluck('id');
 
         return Tweet::whereIn('user_id', $followsIds)
             ->orWhere('user_id', $user->id)
-            ->latest()->get();
+            ->latest()->paginate($amount);
     }
 
 }

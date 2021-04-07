@@ -58,4 +58,15 @@ class ProfileService
 
     }
 
+    /**
+     * Returns paginated tweets of the specified user
+     * @param User $user
+     * @param $amount
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function paginatedTweets(User $user, $amount)
+    {
+        return $user->tweets()->paginate($amount);
+    }
+
 }

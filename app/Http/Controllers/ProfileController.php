@@ -44,7 +44,12 @@ class ProfileController extends Controller
     {
         $checkingUser = auth()->user();
         $isFollowing = $this->userService->isFollowing($checkingUser, $user);
-        return view('profile.show', compact('user', 'isFollowing'));
+
+        return view('profile.show', [
+            'isFollowing' => $isFollowing,
+            'user' => $user,
+            'tweets' => $this->profileService->paginatedTweets($user, 3)
+        ]);
     }
 
     /**

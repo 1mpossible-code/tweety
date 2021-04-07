@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('tweets', [TweetController::class, 'index'])->name('tweets.index');
+Route::get('tweets', [TweetController::class, 'index'])->name('tweets.index')->middleware('auth');
 Route::post('tweets', [TweetController::class, 'store'])->name('tweets.store')->middleware('auth');
 
 Route::get('profile/{user:username}', [ProfileController::class, 'show'])->name('profile');

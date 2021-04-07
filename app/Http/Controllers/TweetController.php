@@ -42,7 +42,7 @@ class TweetController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $timeline = $this->userService->timeline($user);
+        $timeline = $this->userService->timeline($user, 50);
 
         return view('tweets.index', [
             'tweets' => $timeline

@@ -8,7 +8,7 @@
         </div>
 
         <div class="flex justify-between items-center">
-            <div>
+            <div style="max-width: 220px">
                 <h2 class="font-bold text-xl mb-0">{{ $user->name }}</h2>
                 <p class="text-sm">Hello!</p>
             </div>
@@ -29,5 +29,5 @@
         </p>
     </header>
 
-    @include('_timeline', ['tweets' => $user->tweets])
+    @include('_timeline', ['tweets' => $tweets])
 </x-app>
