@@ -18,6 +18,7 @@
 <body>
 <div id="app">
     {{ $slot }}
+    <script src="https://unpkg.com/turbolinks"></script>
 </div>
 </body>
 </html>

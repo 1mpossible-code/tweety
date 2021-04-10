@@ -66,7 +66,7 @@ class ProfileService
      */
     public function paginatedTweets(User $user, $amount)
     {
-        return $user->tweets()->paginate($amount);
+        return $user->tweets()->withLikes()->paginate($amount);
     }
 
 }

@@ -72,7 +72,9 @@ class UserService
 
         return Tweet::whereIn('user_id', $followsIds)
             ->orWhere('user_id', $user->id)
-            ->latest()->paginate($amount);
+            ->withLikes()
+            ->latest()
+            ->paginate($amount);
     }
 
 }

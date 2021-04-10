@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\Tweet;
+use App\Models\User;
 
 /**
  * Class TweetService
@@ -14,14 +15,14 @@ class TweetService
 {
     /**
      * Creates the new Tweet
-     * @param $userId
+     * @param User $user
      * @param $body
      * @return mixed
      */
-    public function create($userId, $body)
+    public function create(User $user, $body)
     {
         return Tweet::create([
-            'user_id' => $userId,
+            'user_id' => $user->id,
             'body' => $body
         ]);
     }

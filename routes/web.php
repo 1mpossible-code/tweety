@@ -4,6 +4,7 @@ use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TweetController;
+use App\Http\Controllers\TweetLikeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +12,9 @@ Auth::routes();
 
 Route::get('tweets', [TweetController::class, 'index'])->name('tweets.index')->middleware('auth');
 Route::post('tweets', [TweetController::class, 'store'])->name('tweets.store')->middleware('auth');
+
+Route::post('tweets/{tweet}/like', [TweetLikeController::class, 'store'])->name('tweetLike.store')->middleware('auth');
+Route::delete('tweets/{tweet}/dislike', [TweetLikeController::class, 'destroy'])->name('tweetLike.destroy')->middleware('auth');
 
 Route::get('profile/{user:username}', [ProfileController::class, 'show'])->name('profile');
 

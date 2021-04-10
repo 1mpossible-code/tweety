@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\User;
 use App\Services\ProfileService;
+use App\Services\TweetLikeService;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Session;
 
@@ -23,16 +24,18 @@ class ProfileController extends Controller
      * @var ProfileService
      */
     private $profileService;
+    private $tweetLikeService;
 
     /**
      * ProfileController constructor.
      * @param UserService $userService
      * @param $profileService
      */
-    public function __construct(UserService $userService, ProfileService $profileService)
+    public function __construct(UserService $userService, ProfileService $profileService, TweetLikeService $tweetLikeService)
     {
         $this->userService = $userService;
         $this->profileService = $profileService;
+        $this->tweetLikeService = $tweetLikeService;
     }
 
     /**
@@ -48,7 +51,8 @@ class ProfileController extends Controller
         return view('profile.show', [
             'isFollowing' => $isFollowing,
             'user' => $user,
-            'tweets' => $this->profileService->paginatedTweets($user, 3)
+            'tweets' => $this->profileService->paginatedTweets($user, 3),
+            'tweetLikeService' => $this->tweetLikeService,
         ]);
     }
 
