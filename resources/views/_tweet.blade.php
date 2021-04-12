@@ -23,7 +23,7 @@
                     @csrf
                     <button type="submit"
                         class="flex items-center {{ $tweetLikeService->isLikedBy($tweet, auth()->user()) ? 'text-blue-500' : 'text-gray-500' }}">
-                        <img src="/images/post/thumb-up.svg" alt="thumb-down" class="w-4 mr-2">
+                        <img src="/images/post/thumb-up.svg" alt="thumb-up" class="w-4 mr-2">
                         <span class="text-sm mr-3">
                             {{ $tweet->likes ?? 0 }}
                         </span>

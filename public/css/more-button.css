@@ -1,0 +1,6 @@
+.more-menu-content {
+    display: none;
+}
+.more-menu-content.show {
+    display: block;
+}
