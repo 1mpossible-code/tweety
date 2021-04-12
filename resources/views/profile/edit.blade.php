@@ -46,27 +46,34 @@
             @enderror
         </div>
 
-        <div class="mb-6">
-            <label for="password">Password</label>
-            <input class="border border-gray-400 p-2 w-full" type="password" name="password" required>
-            @error('password')
-            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-            @enderror
-        </div>
+{{--        <div class="mb-6">--}}
+{{--            <label for="password">Password</label>--}}
+{{--            <input class="border border-gray-400 p-2 w-full" type="password" name="password" required>--}}
+{{--            @error('password')--}}
+{{--            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>--}}
+{{--            @enderror--}}
+{{--        </div>--}}
 
-        <div class="mb-6">
-            <label for="password_confirmation">Password Confirm</label>
-            <input class="border border-gray-400 p-2 w-full" type="password" name="password_confirmation" required>
-            @error('password_confirmation')
-            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-            @enderror
-        </div>
+{{--        <div class="mb-6">--}}
+{{--            <label for="password_confirmation">Password Confirm</label>--}}
+{{--            <input class="border border-gray-400 p-2 w-full" type="password" name="password_confirmation" required>--}}
+{{--            @error('password_confirmation')--}}
+{{--            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>--}}
+{{--            @enderror--}}
+{{--        </div>--}}
+
 
         <div class="mb-6">
             <button type="submit" class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500 transition mr-4">Submit
             </button>
 
             <a href="{{ route('profile', $user) }}" class="transition hover:text-gray-600">Cancel
+            </a>
+        </div>
+
+        <div>
+            <a class="text-blue-300 hover:text-red-300 transition" href="{{ route('password.edit', $user) }}">
+                Change password
             </a>
         </div>
 

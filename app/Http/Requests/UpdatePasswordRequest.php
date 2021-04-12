@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
-class UpdateProfileRequest extends FormRequest
+class UpdatePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,11 +26,8 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('users')->ignore(auth()->user())],
-            'avatar' => ['file'],
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(auth()->user())],
-//            'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'max:255'],
+            'new_password' => ['required', 'string', 'min:8', 'max:255', 'different:password', 'confirmed'],
         ];
     }
 }
