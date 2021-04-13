@@ -28,11 +28,31 @@
 
         <div class="mb-6">
                 <label for="avatar">Avatar</label>
-            <div class="flex">
+            <div class="flex items-center">
                 <input class="border border-gray-400 p-2 w-full" type="file" name="avatar">
                 <img src="{{ $user->avatar }}" alt="your avatar" width="40">
             </div>
             @error('avatar')
+            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="mb-6">
+            <label for="banner">Banner</label>
+            <div class="flex items-center">
+                <input class="border border-gray-400 p-2 w-full" type="file" name="banner">
+                <img src="{{ $user->banner }}" alt="your banner" width="40">
+            </div>
+            @error('banner')
+            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="mb-6">
+            <label for="description">Description</label>
+            <input class="border border-gray-400 p-2 w-full" type="text" name="description" value="{{ $user->description }}"
+                   required>
+            @error('description')
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
             @enderror
         </div>
@@ -45,23 +65,6 @@
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
             @enderror
         </div>
-
-{{--        <div class="mb-6">--}}
-{{--            <label for="password">Password</label>--}}
-{{--            <input class="border border-gray-400 p-2 w-full" type="password" name="password" required>--}}
-{{--            @error('password')--}}
-{{--            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>--}}
-{{--            @enderror--}}
-{{--        </div>--}}
-
-{{--        <div class="mb-6">--}}
-{{--            <label for="password_confirmation">Password Confirm</label>--}}
-{{--            <input class="border border-gray-400 p-2 w-full" type="password" name="password_confirmation" required>--}}
-{{--            @error('password_confirmation')--}}
-{{--            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>--}}
-{{--            @enderror--}}
-{{--        </div>--}}
-
 
         <div class="mb-6">
             <button type="submit" class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500 transition mr-4">Submit

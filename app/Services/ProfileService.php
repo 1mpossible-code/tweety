@@ -29,9 +29,14 @@ class ProfileService
         $attributes = $request->validated();
 
         $avatar = $request->file('avatar');
+        $banner = $request->file('banner');
 
         if ($avatar) {
             $attributes['avatar'] = $this->changeAvatar($user, $avatar);
+        }
+
+        if ($banner) {
+            $attributes['banner'] = $this->changeBanner($user, $banner);
         }
 
         return $user->update($attributes);
@@ -49,13 +54,7 @@ class ProfileService
     {
 
         $oldAvatarFilename = basename($user->avatar);
-        if ($oldAvatarFilename !== 'default-user-avatar.png') {
-            Storage::delete('avatars/'.$oldAvatarFilename);
-        }
-
-        $pathToAvatar = Storage::put('avatars', $avatar);
-        return basename($pathToAvatar);
-
+        return $this->changeFile($oldAvatarFilename, $avatar, 'default-user-avatar.png', 'avatars');
     }
 
     /**
@@ -67,6 +66,26 @@ class ProfileService
     public function paginatedTweets(User $user, $amount)
     {
         return $user->tweets()->withLikes()->paginate($amount);
+    }
+
+    public function changeBanner(User $user, UploadedFile $banner)
+    {
+
+        $oldAvatarFilename = basename($user->avatar);
+        return $this->changeFile($oldAvatarFilename, $banner, 'default-profile-banner.jpg', 'banners');
+
+    }
+
+    public function changeFile(string $oldFilename, UploadedFile $newFile, string $defaultFilename, string $folder)
+    {
+
+        if ($oldFilename !== $defaultFilename) {
+            Storage::delete($folder.'/'.$oldFilename);
+        }
+
+        $path= Storage::put($folder, $newFile);
+        return basename($path);
+
     }
 
 }

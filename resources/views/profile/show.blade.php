@@ -1,7 +1,7 @@
 <x-app>
     <header class="mb-6">
         <div class="banner relative">
-            <img src="/images/default-profile-banner.jpg" alt="Banner" class="rounded-3xl mb-2">
+            <img src="{{ $user->banner }}" alt="Banner" class="rounded-3xl mb-2">
             <img src="{{ $user->avatar }}"
                  class="rounded-full absolute top-full left-1/2 transform -translate-x-1/2 -translate-y-1/2" alt=""
                  style="width: 100px">
@@ -23,10 +23,7 @@
             </div>
         </div>
 
-        <p class="text-sm text-center mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cum fugiat illum inventore ipsam provident quas
-            sequi sunt unde vel.
-        </p>
+        <p class="text-sm text-center mt-4">{{ $user->description }}</p>
     </header>
 
     @include('_timeline', ['tweets' => $tweets])

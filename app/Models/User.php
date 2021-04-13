@@ -25,8 +25,10 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'avatar',
+        'banner',
         'name',
         'email',
+        'description',
         'password',
     ];
 
@@ -66,6 +68,11 @@ class User extends Authenticatable
     public function getAvatarAttribute($value)
     {
         return asset($value ? "storage/avatars/{$value}" : 'images/default-user-avatar.png');
+    }
+
+    public function getBannerAttribute($value)
+    {
+        return asset($value ? "storage/banners/{$value}" : 'images/default-profile-banner.jpg');
     }
 
 

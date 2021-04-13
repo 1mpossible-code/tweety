@@ -56,9 +56,9 @@
                 </div>
 
                 <div class="mb-6">
-                    <label class="block mb-2 uppercase font-bold text-gray-700 text-sm @error('password-confirmation') border-red-600 @enderror" for="password-confirmation">Password Confirmation</label>
-                    <input class="border border-gray-400 p-2 w-full rounded" type="password" name="password-confirmation"
-                           id="password-confirmation"
+                    <label class="block mb-2 uppercase font-bold text-gray-700 text-sm @error('password_confirmation') border-red-600 @enderror" for="password_confirmation">Password Confirmation</label>
+                    <input class="border border-gray-400 p-2 w-full rounded" type="password" name="password_confirmation"
+                           id="password_confirmation"
                            autocomplete="new-password" required>
                     @error('password-confirmation')
                     <span class="font-bold uppercase text-red-600 text-xs">
