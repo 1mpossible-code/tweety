@@ -10,7 +10,7 @@ class Tweet extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'body'];
+    protected $fillable = ['user_id', 'body', 'image'];
 
     public function user()
     {
@@ -29,5 +29,10 @@ class Tweet extends Model
             'likes.tweet_id',
             'tweets.id'
         );
+    }
+
+    public function getImageAttribute($value)
+    {
+        return $value ? asset("storage/images/{$value}") : $value;
     }
 }

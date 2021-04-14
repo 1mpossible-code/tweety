@@ -32,7 +32,6 @@ class UpdateProfileRequest extends FormRequest
             'description' => ['string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(auth()->user())],
-//            'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
         ];
     }
 }

@@ -63,13 +63,13 @@ class TweetController extends Controller
     public function store(StoreTweetRequest $request)
     {
         $user = auth()->user();
-        $body = $request->validated()['body'];
 
-        if (!$this->tweetService->create($user, $body)) {
+        if (!$this->tweetService->create($user, $request)) {
             Session::flash('error', 'Creating new tweet failed!');
             return back();
         }
 
+        Session::flash('success', 'New tweet created successfully');
         return redirect()->route('tweets.index');
     }
 }

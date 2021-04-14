@@ -52,7 +52,6 @@ class ProfileService
      */
     public function changeAvatar(User $user, UploadedFile $avatar)
     {
-
         $oldAvatarFilename = basename($user->avatar);
         return $this->changeFile($oldAvatarFilename, $avatar, 'default-user-avatar.png', 'avatars');
     }
@@ -68,24 +67,36 @@ class ProfileService
         return $user->tweets()->withLikes()->paginate($amount);
     }
 
+    /**
+     * Remove old banner of the user if user has it
+     * save new one to storage/banners folder and return its basename
+     * @param User $user
+     * @param UploadedFile $banner
+     * @return string
+     */
     public function changeBanner(User $user, UploadedFile $banner)
     {
-
-        $oldAvatarFilename = basename($user->avatar);
-        return $this->changeFile($oldAvatarFilename, $banner, 'default-profile-banner.jpg', 'banners');
-
+        $oldBannerFilename = basename($user->avatar);
+        return $this->changeFile($oldBannerFilename, $banner, 'default-profile-banner.jpg', 'banners');
     }
 
+    /**
+     * Save the new file to folder, delete if not a default name
+     * return the basename of saved file
+     * @param string $oldFilename
+     * @param UploadedFile $newFile
+     * @param string $defaultFilename
+     * @param string $folder
+     * @return string
+     */
     public function changeFile(string $oldFilename, UploadedFile $newFile, string $defaultFilename, string $folder)
     {
-
         if ($oldFilename !== $defaultFilename) {
             Storage::delete($folder.'/'.$oldFilename);
         }
 
         $path= Storage::put($folder, $newFile);
         return basename($path);
-
     }
 
 }

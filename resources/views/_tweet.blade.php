@@ -6,7 +6,7 @@
             </a>
         </div>
 
-        <div class="">
+        <div class="w-full">
             <div class="w-full inline-block flex items-center">
 
                 <a href="{{ route('profile', $tweet->user) }}">
@@ -18,11 +18,17 @@
             </div>
             <p class="mb-2">{{ $tweet->body }}</p>
 
+            @isset($tweet->image)
+                <div class="flex justify-center w-full">
+                    <img src="{{ $tweet->image }}" alt="Image" class="mb-2">
+                </div>
+            @endisset
+
             <div class="flex">
                 <form action="{{ route('tweetLike.store', $tweet) }}" method="POST">
                     @csrf
                     <button type="submit"
-                        class="flex items-center {{ $tweetLikeService->isLikedBy($tweet, auth()->user()) ? 'text-blue-500' : 'text-gray-500' }}">
+                            class="flex items-center {{ $tweetLikeService->isLikedBy($tweet, auth()->user()) ? 'text-blue-500' : 'text-gray-500' }}">
                         <img src="/images/post/thumb-up.svg" alt="thumb-up" class="w-4 mr-2">
                         <span class="text-sm mr-3">
                             {{ $tweet->likes ?? 0 }}
@@ -34,7 +40,7 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit"
-                        class="flex items-center {{ $tweetLikeService->isDislikedBy($tweet, auth()->user()) ? 'text-blue-500' : 'text-gray-500' }}">
+                            class="flex items-center {{ $tweetLikeService->isDislikedBy($tweet, auth()->user()) ? 'text-blue-500' : 'text-gray-500' }}">
                         <img src="/images/post/thumb-down.svg" alt="thumb-down" class="w-4 mr-2">
                         <span class="text-sm">
                             {{ $tweet->dislikes ?? 0 }}
