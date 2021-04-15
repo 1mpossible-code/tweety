@@ -1,6 +1,6 @@
 <x-master>
     <div class="flex justify-center" style="height: 80vh">
-        <div class="bg-gray-200 mt-auto mb-auto p-4 rounded-xl w-1/3">
+        <div class="bg-gray-200 mt-auto mb-auto p-4 rounded-xl md:w-1/3">
             <h1 class="font-bold text-xl mb-6 text-center">Login</h1>
             <form method="POST" action="{{ route('login') }}">
                 @csrf

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
+Route::redirect('/', 'login');
+
 Route::get('password/{user:username}/edit', [UpdatePasswordController::class, 'edit'])->name('password.edit')->middleware('auth');
 Route::post('password/{user:username}/update', [UpdatePasswordController::class, 'store'])->name('password.update')->middleware('auth');
 

@@ -18,8 +18,8 @@
                 {{-- Left sidebar --}}
                 <div class="lg:w-1/4 xl:w-1/5 pt-4" style="max-width: 300px">
                     @include('_following-list')
-                    <br>
-                    @include('_who-to-follow-list')
+{{--                    <br>--}}
+{{--                    @include('_who-to-follow-list')--}}
                 </div>
             </div>
         </main>

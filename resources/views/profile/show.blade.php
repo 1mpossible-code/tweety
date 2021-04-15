@@ -1,7 +1,7 @@
 <x-app>
     <header class="mb-6">
-        <div class="banner relative">
-            <img src="{{ $user->banner }}" alt="Banner" class="rounded-3xl mb-2">
+        <div class="banner relative flex justify-center mb-2">
+            <img src="{{ $user->banner }}" alt="Banner" class="rounded-3xl">
             <img src="{{ $user->avatar }}"
                  class="rounded-full absolute top-full left-1/2 transform -translate-x-1/2 -translate-y-1/2" alt=""
                  style="width: 100px">
