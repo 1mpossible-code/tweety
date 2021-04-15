@@ -25,6 +25,9 @@ class TweetController extends Controller
      */
     private $userService;
 
+    /**
+     * @var TweetLikeService
+     */
     private $tweetLikeService;
 
     /**
@@ -71,5 +74,19 @@ class TweetController extends Controller
 
         Session::flash('success', 'New tweet created successfully');
         return redirect()->route('tweets.index');
+    }
+
+    /**
+     * Check if the user can edit relative objects
+     * destroy the specified tweet
+     * @param Tweet $tweet
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy(Tweet $tweet)
+    {
+        $this->authorize('edit', $tweet->user);
+        $this->tweetService->destroy($tweet);
+        return back();
     }
 }

@@ -50,6 +50,14 @@
 
             </div>
         </div>
+
+        @can('edit', $tweet->user)
+        <form method="POST" action="{{ route('tweets.destroy', $tweet) }}" class="ml-4">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="text-sm text-red-600">DELETE</button>
+        </form>
+        @endcan
     </div>
     <hr>
 </div>

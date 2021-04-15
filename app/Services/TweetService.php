@@ -53,4 +53,30 @@ class TweetService
         return basename($filename);
     }
 
+    /**
+     * Delete the tweet and the image in
+     * storage/images directory if exists
+     * @param Tweet $tweet
+     * @return bool|null
+     * @throws \Exception
+     */
+    public function destroy(Tweet $tweet)
+    {
+        if ($tweet->image) {
+            $this->deleteImageFile($tweet);
+        }
+        return $tweet->delete();
+    }
+
+    /**
+     * Delete the image in images directory with
+     * information given by Tweet model
+     * @param Tweet $tweet
+     * @return bool
+     */
+    private function deleteImageFile(Tweet $tweet)
+    {
+        return Storage::delete('images/'.basename($tweet->image));
+    }
+
 }

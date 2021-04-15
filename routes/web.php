@@ -15,6 +15,7 @@ Route::post('password/{user:username}/update', [UpdatePasswordController::class,
 
 Route::get('tweets', [TweetController::class, 'index'])->name('tweets.index')->middleware('auth');
 Route::post('tweets', [TweetController::class, 'store'])->name('tweets.store')->middleware('auth');
+Route::delete('tweets/{tweet}', [TweetController::class, 'destroy'])->name('tweets.destroy')->middleware('auth');
 
 Route::post('tweets/{tweet}/like', [TweetLikeController::class, 'store'])->name('tweetLike.store')->middleware('auth');
 Route::delete('tweets/{tweet}/dislike', [TweetLikeController::class, 'destroy'])->name('tweetLike.destroy')->middleware('auth');
