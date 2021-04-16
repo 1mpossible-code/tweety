@@ -29,7 +29,7 @@ class UpdateProfileRequest extends FormRequest
             'username' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('users')->ignore(auth()->user())],
             'avatar' => ['file'],
             'banner' => ['file'],
-            'description' => ['string', 'max:255'],
+            'description' => ['max:255'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(auth()->user())],
         ];

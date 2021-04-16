@@ -76,7 +76,7 @@ class ProfileService
      */
     public function changeBanner(User $user, UploadedFile $banner)
     {
-        $oldBannerFilename = basename($user->avatar);
+        $oldBannerFilename = basename($user->banner);
         return $this->changeFile($oldBannerFilename, $banner, 'default-profile-banner.jpg', 'banners');
     }
 
@@ -86,17 +86,17 @@ class ProfileService
      * @param string $oldFilename
      * @param UploadedFile $newFile
      * @param string $defaultFilename
-     * @param string $folder
+     * @param string $directory
      * @return string
      */
-    public function changeFile(string $oldFilename, UploadedFile $newFile, string $defaultFilename, string $folder)
+    public function changeFile(string $oldFilename, UploadedFile $newFile, string $defaultFilename, string $directory)
     {
         if ($oldFilename !== $defaultFilename) {
-            Storage::delete($folder.'/'.$oldFilename);
+            Storage::delete($directory.'/'.$oldFilename);
         }
 
-        $path= Storage::put($folder, $newFile);
-        return basename($path);
+        $imageService = new ImageService();
+        return $imageService->saveImage($newFile, $directory);
     }
 
 }

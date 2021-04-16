@@ -11,7 +11,7 @@
         @method('PATCH')
         <div class="mb-6">
             <label for="name">Name</label>
-            <input class="border border-gray-400 p-2 w-full" type="text" name="name" value="{{ $user->name }}" required>
+            <input id="name" class="border border-gray-400 p-2 w-full" type="text" name="name" value="{{ $user->name }}" required>
             @error('name')
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
             @enderror
@@ -19,7 +19,7 @@
 
         <div class="mb-6">
             <label for="username">Username</label>
-            <input class="border border-gray-400 p-2 w-full" type="text" name="username" value="{{ $user->username }}"
+            <input id="username" class="border border-gray-400 p-2 w-full" type="text" name="username" value="{{ $user->username }}"
                    required>
             @error('username')
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="mb-6">
-                <label for="avatar">Avatar</label>
+            <label for="avatar">Avatar</label>
             <div class="flex items-center">
                 <input class="border border-gray-400 p-2 w-full" type="file" name="avatar">
                 <img src="{{ $user->avatar }}" alt="your avatar" width="40">
@@ -50,8 +50,8 @@
 
         <div class="mb-6">
             <label for="description">Description</label>
-            <input class="border border-gray-400 p-2 w-full" type="text" name="description" value="{{ $user->description }}"
-                   required>
+            <input id="description" class="border border-gray-400 p-2 w-full" type="text" name="description"
+                   value="{{ $user->description }}">
             @error('description')
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
             @enderror
@@ -59,7 +59,7 @@
 
         <div class="mb-6">
             <label for="email">Email</label>
-            <input class="border border-gray-400 p-2 w-full" type="email" name="email" value="{{ $user->email }}"
+            <input id="email" class="border border-gray-400 p-2 w-full" type="email" name="email" value="{{ $user->email }}"
                    required>
             @error('email')
             <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -67,7 +67,8 @@
         </div>
 
         <div class="mb-6">
-            <button type="submit" class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500 transition mr-4">Submit
+            <button type="submit" class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500 transition mr-4">
+                Submit
             </button>
 
             <a href="{{ route('profile', $user) }}" class="transition hover:text-gray-600">Cancel

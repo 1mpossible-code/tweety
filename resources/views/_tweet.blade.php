@@ -20,7 +20,9 @@
 
             @isset($tweet->image)
                 <div class="flex justify-center w-full">
-                    <img src="{{ $tweet->image }}" alt="Image" class="mb-2">
+                    <figure>
+                        <img src="{{ $tweet->image }}" alt="Image" width="100%" height="100%" class="h-auto mb-2">
+                    </figure>
                 </div>
             @endisset
 
@@ -52,11 +54,11 @@
         </div>
 
         @can('edit', $tweet->user)
-        <form method="POST" action="{{ route('tweets.destroy', $tweet) }}" class="ml-4">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="text-sm text-red-600">DELETE</button>
-        </form>
+            <form method="POST" action="{{ route('tweets.destroy', $tweet) }}" class="ml-4">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-sm text-red-600">DELETE</button>
+            </form>
         @endcan
     </div>
     <hr>

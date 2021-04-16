@@ -49,8 +49,8 @@ class TweetService
      */
     public function storeImageFile(UploadedFile $image)
     {
-        $filename = Storage::put('images', $image);
-        return basename($filename);
+        $imageService = new ImageService;
+        return $imageService->saveImage($image, 'images');
     }
 
     /**
