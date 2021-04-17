@@ -2,7 +2,7 @@
     <header class="mb-6">
         <div class="banner relative flex justify-center mb-2">
             <figure>
-                <img src="{{ $user->banner }}" alt="Banner" width="100%" height="100%" class="h-auto md:max-h96 rounded-3xl">
+                <img src="{{ $user->banner }}" alt="Banner" width="100%" height="100%" class="h-auto rounded-3xl">
             </figure>
             <img src="{{ $user->avatar }}"
                  class="rounded-full absolute top-full left-1/2 transform -translate-x-1/2 -translate-y-1/2" alt=""

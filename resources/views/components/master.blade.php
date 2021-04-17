@@ -13,13 +13,35 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/toast.js') }}"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toast.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
     {{ $slot }}
+    @if(\Illuminate\Support\Facades\Session::has('error'))
+        <script>
+            Toast.add({
+                text: '{{ \Illuminate\Support\Facades\Session::get('error') }}',
+                color: '#F82D2D',
+                autohide: true,
+                delay: 5000
+            });
+        </script>
+    @endif
+    @if(\Illuminate\Support\Facades\Session::has('success'))
+        <script>
+            Toast.add({
+                text: '{{ \Illuminate\Support\Facades\Session::get('success') }}',
+                color: '#28a745',
+                autohide: true,
+                delay: 5000
+            });
+        </script>
+    @endif
     <script src="https://unpkg.com/turbolinks"></script>
 </div>
 </body>
