@@ -18,6 +18,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/toast.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 <body>
 <div id="app">
@@ -43,6 +44,7 @@
         </script>
     @endif
     <script src="https://unpkg.com/turbolinks"></script>
+    @livewireScripts
 </div>
 </body>
 </html>
