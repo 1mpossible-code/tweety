@@ -6,12 +6,7 @@
     <form action="{{ route('tweets.store') }}" class="w-full float-left" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <textarea name="body"
-                  class="w-full"
-                  placeholder="What`s happening?"
-                  required
-        ></textarea>
-
+        @livewire('publish-tweet-textarea')
         <input type="file" name="image">
 
         @error('body')

@@ -21,7 +21,7 @@
     @livewireStyles
 </head>
 <body>
-<div id="app">
+<div>
     {{ $slot }}
     @if(\Illuminate\Support\Facades\Session::has('error'))
         <script>
