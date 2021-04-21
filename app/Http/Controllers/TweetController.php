@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TweetPosted;
 use App\Http\Requests\StoreTweetRequest;
 use App\Models\Tweet;
 use App\Services\TweetLikeService;
@@ -58,6 +59,15 @@ class TweetController extends Controller
         ]);
     }
 
+    public function show(Tweet $tweet)
+    {
+        $tweet = $this->tweetService->getWithLikes($tweet);
+        return view('tweets.show', [
+            'tweet' => $tweet,
+            'tweetLikeService' => $this->tweetLikeService,
+        ]);
+    }
+
     /**
      * Store the new tweet
      * @param StoreTweetRequest $request
@@ -67,10 +77,14 @@ class TweetController extends Controller
     {
         $user = auth()->user();
 
-        if (!$this->tweetService->create($user, $request)) {
+        $tweet = $this->tweetService->create($user, $request);
+
+        if (!$tweet) {
             Session::flash('error', 'Creating new tweet failed!');
             return back();
         }
+
+        event(new TweetPosted($tweet));
 
         Session::flash('success', 'New tweet created successfully');
         return redirect()->route('tweets.index');

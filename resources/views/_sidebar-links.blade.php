@@ -6,9 +6,14 @@
         >Home</a></li>
     <li>
         <a
-            href="/explore"
+            href="{{ route('explore.index') }}"
             class="font-bold text lg mb-4 block"
         >Explore</a></li>
+    <li>
+        <a
+            href="{{ route('notifications.index') }}"
+            class="font-bold text lg mb-4 block"
+        >Notifications @if(count(auth()->user()->unreadnotifications) > 0) <span class="text-red-600 ml-2">{{ count(auth()->user()->unreadnotifications) }}</span> @endif</a></li>
     <li>
         <a
             href="{{ route('profile', auth()->user()) }}"

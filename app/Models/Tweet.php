@@ -35,4 +35,9 @@ class Tweet extends Model
     {
         return $value ? asset("storage/images/{$value}") : $value;
     }
+
+    public function getPathAttribute()
+    {
+        return asset('tweets/'.$this->id);
+    }
 }

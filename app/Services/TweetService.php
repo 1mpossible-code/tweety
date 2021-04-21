@@ -79,4 +79,14 @@ class TweetService
         return Storage::delete('images/'.basename($tweet->image));
     }
 
+    /**
+     * Get specified tweet with likes
+     * @param Tweet $tweet
+     * @return mixed
+     */
+    public function getWithLikes(Tweet $tweet)
+    {
+        return Tweet::where('id', [$tweet->id])->withLikes()->get()->first();
+    }
+
 }
