@@ -40,4 +40,9 @@ class Tweet extends Model
     {
         return asset('tweets/'.$this->id);
     }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
 }

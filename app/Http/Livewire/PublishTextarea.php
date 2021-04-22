@@ -5,9 +5,11 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 
-class PublishTweetTextarea extends Component
+class PublishTextarea extends Component
 {
     public $string = '';
+    public $textareaClass = '';
+    public $placeholder = '';
 
     public function render()
     {
@@ -15,7 +17,7 @@ class PublishTweetTextarea extends Component
 
         $limit = $this->is_limited($characters);
 
-        return view('livewire.publish-tweet-textarea', [
+        return view('livewire.publish-textarea', [
             'characters' => $characters,
             'limit' => $limit,
         ]);

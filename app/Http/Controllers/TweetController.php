@@ -65,6 +65,7 @@ class TweetController extends Controller
         return view('tweets.show', [
             'tweet' => $tweet,
             'tweetLikeService' => $this->tweetLikeService,
+            'replies' => $tweet->replies,
         ]);
     }
 

@@ -1,4 +1,5 @@
 <x-app>
+    <h3 class="pb-3 mb-3 border-b">Notifications</h3>
     <div>
         @forelse($notifications as $notification)
             <div class="mb-2 pt-2">

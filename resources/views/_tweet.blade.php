@@ -1,5 +1,5 @@
 <div class="mt-5">
-    <div class="flex flex-row mb-5">
+    <div class="flex flex-row">
         <div class="flex-shrink-0 mr-4">
             <a href="{{ route('profile', $tweet->user) }}">
                 <img src="{{ $tweet->user->avatar }}" class="rounded-full" alt="" style="max-width: 40px">
@@ -61,5 +61,4 @@
             </form>
         @endcan
     </div>
-    <hr>
 </div>

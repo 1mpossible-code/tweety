@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NotificationsController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\UpdatePasswordController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowController;
@@ -21,6 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::post('tweets', [TweetController::class, 'store'])->name('tweets.store');
     Route::delete('tweets/{tweet}', [TweetController::class, 'destroy'])->name('tweets.destroy');
     Route::get('tweets/{tweet}', [TweetController::class, 'show'])->name('tweets.show');
+
+    Route::post('tweets/{tweet}/reply', [ReplyController::class, 'store'])->name('reply.store');
+    Route::delete('replies/{reply}', [ReplyController::class, 'destroy'])->name('reply.destroy');
 
     Route::post('tweets/{tweet}/like', [TweetLikeController::class, 'store'])->name('tweetLike.store');
     Route::delete('tweets/{tweet}/dislike', [TweetLikeController::class, 'destroy'])->name('tweetLike.destroy');
