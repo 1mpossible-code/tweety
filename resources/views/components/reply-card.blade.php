@@ -1,4 +1,4 @@
-<div class="mt-4 flex">
+<div class="mt-4 flex" id="reply-{{ $reply->id }}">
     <div class="flex-shrink-0 mr-4">
         <a href="{{ route('profile', $reply->user) }}">
             <img src="{{ $reply->user->avatar }}" class="rounded-full" alt="" style="max-width: 30px">

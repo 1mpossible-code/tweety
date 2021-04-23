@@ -13,6 +13,6 @@
         <p class="text-red-600 font-bold text-sm float-left">{{ $message }}</p>
         @enderror
 
-        <x-tweet-button />
+        <x-blue-button>Tweet</x-blue-button>
     </form>
 </div>

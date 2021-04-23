@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('explore', [ExploreController::class, 'index'])->name('explore.index');
 
     Route::get('notifications', [NotificationsController::class, 'index'])->name('notifications.index');
+    Route::delete('notifications', [NotificationsController::class, 'destroy'])->name('notifications.destroy');
 });
 
 Route::get('profile/{user:username}', [ProfileController::class, 'show'])->name('profile');
