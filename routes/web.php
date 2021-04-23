@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\UpdatePasswordController;
@@ -41,3 +42,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('profile/{user:username}', [ProfileController::class, 'show'])->name('profile');
+Route::get('profile/{user:username}/following', [FollowController::class, 'index'])->name('follow.index');
+Route::get('profile/{user:username}/followers', [FollowerController::class, 'index'])->name('follower.index');

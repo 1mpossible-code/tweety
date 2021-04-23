@@ -94,4 +94,9 @@ class User extends Authenticatable
         return $this->belongsToMany(__CLASS__, 'follows', 'user_id', 'following_user_id');
     }
 
+    public function followers()
+    {
+        return $this->belongsToMany(__CLASS__, 'follows', 'following_user_id', 'user_id');
+    }
+
 }

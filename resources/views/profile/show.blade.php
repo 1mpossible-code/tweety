@@ -12,7 +12,7 @@
         <div class="flex justify-between items-center">
             <div style="max-width: 220px">
                 <h2 class="font-bold text-xl mb-0">{{ $user->name }}</h2>
-                <p class="text-sm">Hello!</p>
+                <p class="text-sm text-gray-400">{{ '@'.$user->username }}</p>
             </div>
 
             <div>
@@ -27,6 +27,16 @@
         </div>
 
         <p class="text-sm text-center mt-4">{{ $user->description }}</p>
+        <div>
+            <a href="{{ route('follow.index', $user) }}">
+                <span class="text-gray-700 font-bold">{{ count( $user->follows ) }}</span><span
+                    class="text-gray-400 mr-4"> Following</span>
+            </a>
+            <a href="{{ route('follower.index', $user) }}">
+                <span class="text-gray-700 font-bold">{{ count( $user->followers ) }}</span><span
+                    class="text-gray-400"> Followers</span>
+            </a>
+        </div>
     </header>
 
     @include('_timeline', ['tweets' => $tweets])

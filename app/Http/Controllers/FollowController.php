@@ -22,6 +22,11 @@ class FollowController extends Controller
         $this->userService = $userService;
     }
 
+    public function index(User $user)
+    {
+        return view('profile.follow.index', compact('user'));
+    }
+
     public function store(User $user)
     {
         $subscriber = auth()->user();

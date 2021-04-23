@@ -6,7 +6,7 @@
                 <div class="lg:w-1/6 xl:1/5 pt-4">
                     <header class="mb-3">
                         <h1>
-                            <img src="/images/logo.svg" alt="Logo">
+                            <a href="{{ route('tweets.index') }}"><img src="/images/logo.svg" alt="Logo"></a>
                         </h1>
                     </header>
                     @include('_sidebar-links')
@@ -18,8 +18,6 @@
                 {{-- Left sidebar --}}
                 <div class="lg:w-1/4 xl:w-1/5 pt-4" style="max-width: 300px">
                     @include('_following-list')
-{{--                    <br>--}}
-{{--                    @include('_who-to-follow-list')--}}
                 </div>
             </div>
         </main>
