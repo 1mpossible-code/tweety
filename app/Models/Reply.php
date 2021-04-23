@@ -13,6 +13,11 @@ class Reply extends Model
         'user_id', 'tweet_id', 'body',
     ];
 
+    public function getPathAttribute()
+    {
+        return asset('tweets/'.$this->tweet->id.'#reply-'.$this->id);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

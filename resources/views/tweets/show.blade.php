@@ -17,7 +17,7 @@
     <div class="px-2">
         <hr>
         @forelse($replies as $reply)
-            <x-user-reply-card :reply="$reply" />
+            <x-reply-card :reply="$reply" />
             <hr class="mt-2">
         @empty
             <div class="mt-4">No replies yet</div>

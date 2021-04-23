@@ -6,11 +6,13 @@ use App\Events\TweetPosted;
 use App\Models\User;
 use App\Notifications\YouWereMentionedInTweet;
 use App\Services\MentionService;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class NotifyMentionedUsers
+class NotifyMentionedUsersInTweet implements ShouldQueue
 {
+    use Queueable;
     /**
      * Create the event listener.
      *

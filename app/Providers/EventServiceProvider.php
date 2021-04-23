@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Events\ReplyPosted;
 use App\Events\TweetPosted;
-use App\Listeners\NotifyMentionedUsers;
+use App\Listeners\NotifyMentionedUsersInReply;
+use App\Listeners\NotifyMentionedUsersInTweet;
+use App\Models\Reply;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -21,8 +24,11 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         TweetPosted::class => [
-            NotifyMentionedUsers::class,
+            NotifyMentionedUsersInTweet::class,
         ],
+        ReplyPosted::class => [
+            NotifyMentionedUsersInReply::class,
+        ]
     ];
 
     /**

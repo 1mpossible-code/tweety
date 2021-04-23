@@ -2,27 +2,26 @@
 
 namespace App\Notifications;
 
-use App\Models\Tweet;
+use App\Models\Reply;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class YouWereMentionedInTweet extends Notification
+class YouWereMentionedInReply extends Notification
 {
     use Queueable;
 
-    protected $tweet;
+    public $reply;
 
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param $reply
      */
-    public function __construct(Tweet $tweet)
+    public function __construct(Reply $reply)
     {
-        $this->tweet = $tweet;
+        $this->reply = $reply;
     }
 
     /**
@@ -31,7 +30,8 @@ class YouWereMentionedInTweet extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable){
+    public function via($notifiable)
+    {
         return ['database'];
     }
 
@@ -44,8 +44,8 @@ class YouWereMentionedInTweet extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => $this->tweet->user->name.' mentioned you in tweet',
-            'link' => $this->tweet->path,
+            'message' => $this->reply->user->name.' mentioned you in reply',
+            'link' => $this->reply->path,
         ];
     }
 }

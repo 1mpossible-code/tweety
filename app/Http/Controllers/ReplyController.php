@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ReplyPosted;
 use App\Http\Requests\StoreReplyRequest;
 use App\Models\Reply;
 use App\Models\Tweet;
@@ -32,6 +33,7 @@ class ReplyController extends Controller
             Session::flash('error', 'Creating new reply failed!');
         } else {
             Session::flash('success', 'New reply created successfully');
+            event(new ReplyPosted($reply));
         }
 
         return back();
