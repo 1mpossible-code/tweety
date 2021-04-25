@@ -22,7 +22,9 @@
                         Edit Profile
                     </a>
                 @endcan
-                <x-follow-button :user="$user" :isFollowing="$isFollowing"/>
+                @auth
+                    <x-follow-button :user="$user" :isFollowing="$isFollowing"/>
+                @endauth
             </div>
         </div>
 

@@ -17,7 +17,9 @@
                 </div>
                 {{-- Left sidebar --}}
                 <div class="lg:w-1/4 xl:w-1/5 pt-4" style="max-width: 300px">
-                    @include('_following-list')
+                    @auth
+                        @include('_following-list')
+                    @endauth
                 </div>
             </div>
         </main>

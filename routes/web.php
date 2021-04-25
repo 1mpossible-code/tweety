@@ -22,7 +22,6 @@ Route::middleware('auth')->group(function () {
     Route::get('tweets', [TweetController::class, 'index'])->name('tweets.index');
     Route::post('tweets', [TweetController::class, 'store'])->name('tweets.store');
     Route::delete('tweets/{tweet}', [TweetController::class, 'destroy'])->name('tweets.destroy');
-    Route::get('tweets/{tweet}', [TweetController::class, 'show'])->name('tweets.show');
 
     Route::post('tweets/{tweet}/reply', [ReplyController::class, 'store'])->name('reply.store');
     Route::delete('replies/{reply}', [ReplyController::class, 'destroy'])->name('reply.destroy');
@@ -36,8 +35,6 @@ Route::middleware('auth')->group(function () {
     Route::get('profile/{user:username}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('profile/{user:username}', [ProfileController::class, 'update'])->name('profile.update');
 
-    Route::get('explore', [ExploreController::class, 'index'])->name('explore.index');
-
     Route::get('notifications', [NotificationsController::class, 'index'])->name('notifications.index');
     Route::delete('notifications', [NotificationsController::class, 'destroy'])->name('notifications.destroy');
 });
@@ -45,3 +42,7 @@ Route::middleware('auth')->group(function () {
 Route::get('profile/{user:username}', [ProfileController::class, 'show'])->name('profile');
 Route::get('profile/{user:username}/following', [FollowController::class, 'index'])->name('follow.index');
 Route::get('profile/{user:username}/followers', [FollowerController::class, 'index'])->name('follower.index');
+
+Route::get('tweets/{tweet}', [TweetController::class, 'show'])->name('tweets.show');
+
+Route::get('explore', [ExploreController::class, 'index'])->name('explore.index');

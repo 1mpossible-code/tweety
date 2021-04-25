@@ -27,6 +27,7 @@
             @endisset
 
             <div class="flex">
+                @auth
                 <form action="{{ route('tweetLike.store', $tweet) }}" method="POST">
                     @csrf
                     <button type="submit"
@@ -49,6 +50,7 @@
                         </span>
                     </button>
                 </form>
+                @endauth
 
             </div>
         </div>

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Services\ProfileService;
 use App\Services\TweetLikeService;
 use App\Services\UserService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 /**
@@ -45,14 +46,20 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-        $checkingUser = auth()->user();
-        $isFollowing = $this->userService->isFollowing($checkingUser, $user);
+        if (Auth::check()) {
+            $checkingUser = auth()->user();
+            $isFollowing = $this->userService->isFollowing($checkingUser, $user);
 
+            return view('profile.show', [
+                'isFollowing' => $isFollowing,
+                'user' => $user,
+                'tweets' => $this->profileService->paginatedTweets($user, 3),
+                'tweetLikeService' => $this->tweetLikeService,
+            ]);
+        }
         return view('profile.show', [
-            'isFollowing' => $isFollowing,
             'user' => $user,
             'tweets' => $this->profileService->paginatedTweets($user, 3),
-            'tweetLikeService' => $this->tweetLikeService,
         ]);
     }
 
