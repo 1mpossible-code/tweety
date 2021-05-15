@@ -21,6 +21,8 @@ and [Tailwind CSS](https://tailwindcss.com/).
 
 Tweety uses the best Laravel features and practices.
 
+![](storage/tweety.gif)
+
 ## Features
 
 Tweety has following features:
